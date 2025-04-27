@@ -1,7 +1,12 @@
+import Image from "next/image";
+
 export default function AboutWindow(){
     return(
         <div className="bg-red-00 bg-white p-3">
-            <div className="flex justify-center items-center py-5 border-b">
+            <div className="flex justify-center items-center gap-5 py-5 border-b">
+                <div className="hover:scale-110 ease-out transition-all">
+                    <Image className="h-34 w-34 rounded-full object-cover" src={'/pictures/profile.jpg'} width={180} height={180} alt="..." />
+                </div>
                 <div>
                     <h2 className="text-5xl font-bold">Yassine Zebiri</h2>
                     <h3 className="text-lg font-extralight my-3">hi ,i'm developer web and freelance</h3>

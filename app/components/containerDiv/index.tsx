@@ -42,7 +42,7 @@ export default function ContainerDiv(){
                         <h3  className="font-semibold mt-3">works</h3>
                     </div>
                    
-                    <div className=" cursor-pointer hover:scale-110" onClick={()=>handleAddWindow('contact')}>
+                    <div className=" cursor-pointer hover:scale-110" onClick={()=>handleAddWindow('contact',500)}>
                         <FontAwesomeIcon className="text-6xl  " icon={faPaperPlane} />
                         <h3  className="font-semibold mt-3">contact me</h3>
                     </div>

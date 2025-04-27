@@ -9,6 +9,7 @@ import WindowComponent from "../windows/window";
 import AboutWindow from "../windows/about";
 import LinksWindow from "../windows/links";
 import WorksWindow from "../windows/works";
+import ContactWindow from "../windows/contact";
 
 export default function BoardComponent() {
 
@@ -120,6 +121,12 @@ console.log(e.currentTarget);
               return (
                 <WindowComponent key={index} handle={handleMouseDown} windowData={item} >
                   <WorksWindow/>
+              </WindowComponent>
+              ) 
+              case 'contact':
+              return (
+                <WindowComponent key={index} handle={handleMouseDown} windowData={item} >
+                  <ContactWindow/>
               </WindowComponent>
               )       
           default:
