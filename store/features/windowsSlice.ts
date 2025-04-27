@@ -26,7 +26,8 @@ export const windowsSlice = createSlice({
             name:action.payload.name,
             top:action.payload.top,
             left:action.payload.left,
-            cursor:action.payload.cursor
+            cursor:action.payload.cursor,
+            width:action.payload.width
         })
     },
     setPositionWindow:(state,action)=>{

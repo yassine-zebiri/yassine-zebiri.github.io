@@ -5,49 +5,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ContainerDiv(){
     const dispatch=useAppDispatch();
-    const handleAddWindow=(name:string)=>{
+    const handleAddWindow=(name:string,width?:number)=>{
         dispatch(addWindow({
             name:name,
             top:500,
             left:500,
-            cursor:'grab'
+            cursor:'grab',
+            width:width
         }));
     }
     return(
-        <div style={{maxWidth:'620px',width:'100%',height:'250px'}}
+        <div style={{maxWidth:'800px',width:'100%'}}
          className="bg-white ">
-            <div className="bg-black ">
+            <div className="bg-black p-3 text-2xl font-mono font-semibold text-white">
                 Home
             </div>
             <div 
-            className="flex justify-center gap-5 items-center 
-            flex-col bg-amber-200 h-full ">
+            className=" bg-amber-00 h-full pt-26 py-12">
+                <div className="flex justify-center gap-5 items-center flex-col">
                 <div>
-                    <h1 className="text-4xl font-bold">Hi! i'm Yassine Zebiri</h1>
-                    <h2>developer web</h2>
-                    <button className="sm:block hidden  px-4 py-2 bg-red-400" 
-                    onClick={()=>{dispatch(addWindow({id:1,top:500,left:500,cursor:'grab'}))}}>push window</button>
-                    
+                    <h1 className="text-6xl font-semibold">Hi! i'm Yassine Zebiri</h1>
+                    <p className="text-lg text-center">developer web</p>  
                 </div>
-                <div className="flex gap-5 p-5 text-center">
-                    <div  onClick={()=>handleAddWindow('about')}>
-                        <FontAwesomeIcon  className="text-5xl" icon={faCircleInfo} />
-                        <h3 className="text-sm font-bold">about</h3>
+
+                <div className="flex gap-12 p-5 text-center">
+                    <div className=" cursor-pointer hover:scale-110"  onClick={()=>handleAddWindow('about',800)}>
+                        <FontAwesomeIcon  className="text-6xl" icon={faCircleInfo} />
+                        <h3 className="font-semibold mt-3">about</h3>
                     </div>
-                    <div  onClick={()=>handleAddWindow('links')}>
-                        <FontAwesomeIcon className="text-5xl" icon={faLink} />
-                        <h3  className="text-sm font-bold">links</h3>
+                    <div className=" cursor-pointer hover:scale-110" onClick={()=>handleAddWindow('links',650)}>
+                        <FontAwesomeIcon className="text-6xl" icon={faLink} />
+                        <h3  className="font-semibold mt-3">links</h3>
                     </div>
-                    <div  onClick={()=>handleAddWindow('works')}>
-                        <FontAwesomeIcon className="text-5xl shadow-xl " icon={faFolderClosed} />
-                        <h3  className="text-sm font-bold">works</h3>
+                    <div className=" cursor-pointer hover:scale-110" onClick={()=>handleAddWindow('works',900)}>
+                        <FontAwesomeIcon className="text-6xl" icon={faFolderClosed} />
+                        <h3  className="font-semibold mt-3">works</h3>
                     </div>
                    
-                    <div  onClick={()=>handleAddWindow('contact')}>
-                        <FontAwesomeIcon className="text-5xl  " icon={faPaperPlane} />
-                        <h3  className="text-sm font-bold">contact me</h3>
+                    <div className=" cursor-pointer hover:scale-110" onClick={()=>handleAddWindow('contact')}>
+                        <FontAwesomeIcon className="text-6xl  " icon={faPaperPlane} />
+                        <h3  className="font-semibold mt-3">contact me</h3>
                     </div>
                     
+                </div>
                 </div>
             </div>
         </div>
