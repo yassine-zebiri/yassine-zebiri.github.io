@@ -101,7 +101,7 @@ console.log(e.currentTarget);
   return (
     <div
       ref={boardRef}
-      className="bg-amber-500 relative w-full h-screen overflow-hidden flex justify-center items-center"
+      className=" relative w-full h-screen overflow-hidden flex justify-center items-center"
     >
       {states.windows.map((item:windowType,index) => {
         switch (item.name) {

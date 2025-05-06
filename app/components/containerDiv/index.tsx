@@ -16,8 +16,8 @@ export default function ContainerDiv(){
     }
     return(
         <div style={{maxWidth:'800px',width:'100%'}}
-         className="bg-white ">
-            <div className="bg-black p-3 text-2xl font-mono font-semibold text-white">
+         className="bg-slate-800 text-white border-2 border-b-6  border-r-3 border-gray-400 rounded-xl overflow-hidden">
+            <div className="bg-slate-950 p-3 text-2xl font-mono font-semibold text-white">
                 Home
             </div>
             <div 

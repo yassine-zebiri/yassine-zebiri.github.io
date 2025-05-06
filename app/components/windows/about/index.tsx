@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutWindow(){
     return(
-        <div className="bg-red-00 bg-white p-3">
+        <div className="text-white bg-slate-800 p-3">
             <div className="flex justify-center items-center gap-5 py-5 border-b">
                 <div className="hover:scale-110 ease-out transition-all">
                     <Image className="h-34 w-34 rounded-full object-cover" src={'/pictures/profile.jpg'} width={180} height={180} alt="..." />
@@ -12,7 +12,7 @@ export default function AboutWindow(){
                     <h3 className="text-lg font-extralight my-3">hi ,i'm developer web and freelance</h3>
                 </div>
             </div>
-            <div className="px-4 py-2 text-lg font-extralight text-gray-600  ">
+            <div className="px-4 py-2 text-lg font-extralight text-gray-300  ">
                 <p className="py-3">Hello! I'm <strong> Yassine Zebiri</strong>, a web developer specializing in building modern and creative web applications.</p>
                 <h2 className="text-2xl font-bold py-2">What can I do?</h2>
                 <ul className=" list-disc pl-8">

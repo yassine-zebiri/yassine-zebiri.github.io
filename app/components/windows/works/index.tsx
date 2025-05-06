@@ -6,14 +6,14 @@ import Link from "next/link";
 import { projects } from "./data";
 
 export default function WorksWindow(){
-    const skills:string[]=['HTML/CSS','Jabascript','Typescript','Php','Sql','React','Next.js'];
+    const skills:string[]=['HTML/CSS','Javascript','Typescript','Php','Sql','React','Next.js'];
     return(
-        <div className="bg-white p-5 overflow-y-scroll" style={{maxHeight:'500px'}}>
+        <div className="bg-slate-800 text-white p-5 overflow-y-scroll" style={{maxHeight:'500px'}}>
             <div className="border-b">
                 <h2 className="text-2xl font-bold py-3">skills</h2>
                 <div className="flex flex-wrap p-3 gap-3 ">
                     {skills.map((item,index)=>(
-                        <div key={index} className="border font-semibold hover:translate-y-1 rounded px-4 py-2  border-b-4 border-b-gray-400">
+                        <div key={index} className="border font-semibold hover:translate-y-1 rounded px-4 py-2  border-b-4 bg-slate-700 border-b-gray-300">
                             {item}
                         </div>
                     ))}
@@ -31,7 +31,7 @@ export default function WorksWindow(){
                             </div>
                             <div className="p-3">
                                 <h3 className="text-xl font-bold">{item.name}</h3>
-                                <p className="text-sm text-gray-500 py-3">{item.description}</p>
+                                <p className="text-sm text-gray-300 py-3">{item.description}</p>
                                 <div>
                                 {item.links.length>0 ?
                             (
