@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutWindow(){
     return(
-        <div className="text-white bg-slate-800 p-3">
+        <div className="text-white bg-slate-800 p-3 overflow-y-scroll" style={{maxHeight:'500px'}}>
             <div className="flex justify-center items-center gap-5 py-5 border-b">
                 <div className="hover:scale-110 ease-out transition-all">
                     <Image className="h-34 w-34 rounded-full object-cover" src={'/pictures/profile.jpg'} width={180} height={180} alt="..." />

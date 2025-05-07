@@ -27,6 +27,15 @@ export default function BoardComponent() {
     dispatch(DeleteWindow({id:id}));
     setElement(null);
   }
+  const handleGetCenter=()=>{
+    if(boardRef.current){
+      const boardRect=boardRef.current?.getBoundingClientRect();
+      const X=boardRect.width/2-250;
+      const Y=boardRect.height/2-250;
+      const result={x:X,y:Y};
+      return result;
+    }
+  }
   const handleMouseDown = (
     component: windowType,
     e: React.MouseEvent<HTMLDivElement>
@@ -135,7 +144,7 @@ console.log(e.currentTarget);
       })}
     
 
-      <ContainerDiv/>
+      <ContainerDiv handle={()=>handleGetCenter()}/>
     
     </div>
   );
