@@ -36,9 +36,9 @@ export default function WindowComponent({windowData,handle,children}:windowTypeW
                 </div>
                 
             </div>
-            <>
+            <div className=" overflow-y-auto" style={{maxHeight:'500px'}}>
             {children}
-            </>
+            </div>
         </div>
     )
 }

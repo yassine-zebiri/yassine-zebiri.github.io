@@ -8,7 +8,7 @@ import { projects } from "./data";
 export default function WorksWindow(){
     const skills:string[]=['HTML/CSS','Javascript','Typescript','Php','Sql','React','Next.js'];
     return(
-        <div className="bg-slate-800 text-white p-5 overflow-y-scroll" style={{maxHeight:'500px'}}>
+        <div className="bg-slate-800 text-white p-5" >
             <div className="border-b">
                 <h2 className="text-2xl font-bold py-3">skills</h2>
                 <div className="flex flex-wrap p-3 gap-3 ">

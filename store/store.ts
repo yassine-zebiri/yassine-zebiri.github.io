@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { windowsSlice } from './features/windowsSlice'
+import { ScreenSlice } from './features/ScreenSlice'
 // ...
 
 export const store = configureStore({
   reducer: {
-    windows:windowsSlice.reducer
+    windows:windowsSlice.reducer,
+    screen:ScreenSlice.reducer
   },
 })
 

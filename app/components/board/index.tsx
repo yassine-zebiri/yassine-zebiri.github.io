@@ -10,6 +10,8 @@ import AboutWindow from "../windows/about";
 import LinksWindow from "../windows/links";
 import WorksWindow from "../windows/works";
 import ContactWindow from "../windows/contact";
+import { selectScreen } from "@/store/features/ScreenSlice";
+import ScreenComponent from "../windows/screen";
 
 export default function BoardComponent() {
 
@@ -23,6 +25,8 @@ export default function BoardComponent() {
 
   const boardRef = useRef<HTMLDivElement>(null);
   const[elementTarget,seElementTarget]=useState<any>();
+  
+  
   const Delete=(id:any)=>{
     dispatch(DeleteWindow({id:id}));
     setElement(null);
@@ -145,7 +149,10 @@ console.log(e.currentTarget);
     
 
       <ContainerDiv handle={()=>handleGetCenter()}/>
-    
+        {states.screen.active && (
+          <ScreenComponent/>
+        )}
+     
     </div>
   );
 }

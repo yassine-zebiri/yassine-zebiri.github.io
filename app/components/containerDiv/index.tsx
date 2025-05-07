@@ -1,3 +1,4 @@
+import { setStateScreen } from "@/store/features/ScreenSlice";
 import { addWindow } from "@/store/features/windowsSlice";
 import { useAppDispatch } from "@/store/hooks";
 import { faCircleInfo, faFolderClosed, faLink, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -6,19 +7,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function ContainerDiv({handle}:any){
     const dispatch=useAppDispatch();
     const handleAddWindow=(name:string,width?:number)=>{
-        dispatch(addWindow({
-            name:name,
-            top:handle().y,
-            left:handle().x,
-            cursor:'grab',
-            width:width
-        }));
+        if(window.innerWidth>640){
+            dispatch(addWindow({
+                name:name,
+                top:handle().y,
+                left:handle().x,
+                cursor:'grab',
+                width:width
+            }));
+        }else{
+            dispatch(setStateScreen({name:name}))
+        }
+        
     }
     
     return(
-        <div style={{maxWidth:'800px',width:'100%',    backgroundColor:' rgb(5, 14, 32)'
+        <div style={{maxWidth:'800px',width:'100%'
         }}
-         className="bg-slate-800 text-white sm:border-2 sm:border-b-6  sm:border-r-3 sm:border-gray-400 rounded-xl overflow-hidden">
+         className=" bg-primary text-white sm:border-2 sm:border-b-6  sm:border-r-3 sm:border-gray-400 rounded-xl overflow-hidden">
             <div className="bg-slate-950 p-3 text-2xl font-mono font-semibold text-white hidden sm:block">
                 Home
             </div>
@@ -30,23 +36,31 @@ export default function ContainerDiv({handle}:any){
                     <p className="text-lg text-center mt-5">developer web</p>  
                 </div>
 
-                <div className="flex gap-y-12 sm:gap-12 p-5 text-center font-mono flex-wrap">
-                    <div className=" cursor-pointer hover:scale-110 w-1/2 sm:w-auto"  onClick={()=>handleAddWindow('about',800)}>
-                        <FontAwesomeIcon  className="text-6xl" icon={faCircleInfo} />
-                        <h3 className="text-lg mt-3">about</h3>
+                <div className="flex gap-y-6 sm:gap-6 p-5 text-center font-mono flex-wrap">
+                    <div className="w-1/2 sm:w-auto bg-red-1 00 px-3">
+                        <div className=" cursor-pointer hover:scale-110 w-26 h-26 sm:w-fit pt-4  ml-auto bg-slate-800 sm:bg-transparent rounded-lg"  onClick={()=>handleAddWindow('about',800)}>
+                            <FontAwesomeIcon  className="sm:text-6xl text-4xl" icon={faCircleInfo} />
+                            <h3 className="sm:text-lg text-sm mt-3">about</h3>
+                        </div>
                     </div>
-                    <div className=" cursor-pointer hover:scale-110 w-1/2 sm:w-auto" onClick={()=>handleAddWindow('links',650)}>
-                        <FontAwesomeIcon className="text-6xl" icon={faLink} />
-                        <h3  className="text-lg  mt-3">links</h3>
+                    <div className="w-1/2 sm:w-auto  bg-red-40 0 px-3">
+                        <div className=" cursor-pointer hover:scale-110 w-26 h-26 sm:w-fit pt-4 mr-auto  bg-slate-800 sm:bg-transparent rounded-lg" onClick={()=>handleAddWindow('links',650)}>
+                            <FontAwesomeIcon className="sm:text-6xl text-4xl" icon={faLink} />
+                            <h3  className="sm:text-lg text-sm  mt-3">links</h3>
+                        </div>
                     </div>
-                    <div className=" cursor-pointer hover:scale-110  w-1/2 sm:w-auto" onClick={()=>handleAddWindow('works',900)}>
-                        <FontAwesomeIcon className="text-6xl" icon={faFolderClosed} />
-                        <h3  className="text-lg  mt-3">works</h3>
+                    <div className="w-1/2 sm:w-auto px-3">
+                        <div className=" cursor-pointer hover:scale-110 w-26 h-26 sm:w-fit pt-4 ml-auto  bg-slate-800 sm:bg-transparent rounded-lg" onClick={()=>handleAddWindow('works',900)}>
+                            <FontAwesomeIcon className="sm:text-6xl text-4xl" icon={faFolderClosed} />
+                            <h3  className="sm:text-lg text-sm  mt-3">works</h3>
+                        </div>
                     </div>
                    
-                    <div className=" cursor-pointer hover:scale-110 w-1/2 sm:w-auto" onClick={()=>handleAddWindow('contact',500)}>
-                        <FontAwesomeIcon className="text-6xl  " icon={faPaperPlane} />
-                        <h3  className="text-lg  mt-3">contact me</h3>
+                    <div className="w-1/2 sm:w-auto px-3">
+                        <div className=" cursor-pointer hover:scale-110 w-26 h-26 sm:w-fit pt-4 mr-auto bg-slate-800 sm:bg-transparent rounded-lg" onClick={()=>handleAddWindow('contact',500)}>
+                            <FontAwesomeIcon className="sm:text-6xl text-4xl  " icon={faPaperPlane} />
+                            <h3  className="sm:text-lg text-sm mt-3">contact me</h3>
+                        </div>
                     </div>
                     
                 </div>
