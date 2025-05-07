@@ -26,7 +26,7 @@ export default function ContainerDiv({handle}:any){
             className=" bg-amber-00 h-full pt-26 py-12 sm:px-0 px-4">
                 <div className="flex justify-center gap-5 items-center flex-col">
                 <div>
-                    <h1 className="sm:text-6xl text-5xl font-semibold">Hi! i'm <br/> Yassine Zebiri</h1>
+                    <h1 className="sm:text-6xl text-4xl font-semibold">Hi! i'm <br/> Yassine Zebiri</h1>
                     <p className="text-lg text-center mt-5">developer web</p>  
                 </div>
 
