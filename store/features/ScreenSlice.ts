@@ -6,7 +6,8 @@ import { screenType } from '@/types'
 
 const initialState:screenType = {
     active:false,
-    name:""
+    name:"",
+    sound:true
 }
 
 export const ScreenSlice = createSlice({
@@ -21,11 +22,15 @@ export const ScreenSlice = createSlice({
     setStateScreenClose:(state)=>{
         state.active=false;
         state.name="";
+    },
+    setStateSound:(state)=>{
+      state.sound=!state.sound;
     }
   },
+ 
 })
 
-export const {setStateScreen,setStateScreenClose } = ScreenSlice.actions
+export const {setStateScreen,setStateScreenClose,setStateSound } = ScreenSlice.actions
 
 export const selectScreen = (state: RootState) => state.screen
 

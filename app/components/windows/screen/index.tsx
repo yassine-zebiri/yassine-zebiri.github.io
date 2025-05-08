@@ -7,6 +7,7 @@ import { setStateScreenClose } from "@/store/features/ScreenSlice";
 import { useEffect, useState } from "react";
 import WorksWindow from "../works";
 import ContactWindow from "../contact";
+import {useHandleSounds} from "@/hooks/useHandlesounds";
 
 export default function ScreenComponent(){
     const states=useAppSelector(state=>state);
@@ -20,22 +21,25 @@ export default function ScreenComponent(){
         setIsVisible(false);
         setTimeout(()=>{
             dispatch(setStateScreenClose());
-        },800);
+        },400);
+        useHandleSounds('/sounds/notebook-close.mp3');
     }
     return(
         <>
-            <div className={`w-full bg-black fixed p-0 h-full z-10 transition-opacity duration-800 ${
+            <div className={`w-full bg-black fixed p-0 h-full z-10 transition-opacity duration-400 ${
           isVisible ? "opacity-75" : "opacity-0"
         }`}>
                 
             </div>
-            <div  className={`transition-transform duration-800 ease-in-out transform ${
+            <div  className={`transition-transform duration-400 ease-in-out transform ${
           isVisible ? "translate-y-0" : "translate-y-full"
         } pb-5 w-full fixed z-20 h-13/15 bottom-0`}>
                 <div className=" bg-slate-950 p-5 text-white rounded-t-2xl flex justify-between items-center">
                    
                     <div>
-                        <h2 className="text-2xl font-bold ">home</h2>
+                        <h2 className="text-2xl font-bold ">
+                            {states.screen.name}
+                        </h2>
                     </div>
                     <div onClick={()=>handleClose()}>
                         <FontAwesomeIcon className="text-2xl cursor-pointer" icon={faCircleChevronDown} />

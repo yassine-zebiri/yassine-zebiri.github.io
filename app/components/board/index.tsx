@@ -12,6 +12,8 @@ import WorksWindow from "../windows/works";
 import ContactWindow from "../windows/contact";
 import { selectScreen } from "@/store/features/ScreenSlice";
 import ScreenComponent from "../windows/screen";
+import Image from "next/image";
+import SoundComponent from "../soundComponent";
 
 export default function BoardComponent() {
 
@@ -152,7 +154,10 @@ console.log(e.currentTarget);
         {states.screen.active && (
           <ScreenComponent/>
         )}
-     
+     <div className="logo-rocket w-14 sm:w-fit">
+          <Image src={'/logo.png'}  width={75} height={75} alt='...' />
+        </div>
+        <SoundComponent/>
     </div>
   );
 }

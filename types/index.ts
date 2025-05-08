@@ -9,6 +9,7 @@ export type windowType ={
 export type screenType={
     active:boolean;
     name:'about'|'links'|'works'|'contact'|'';
+    sound:boolean;
 }
 export interface windowTypeWithHandle <T extends windowType>{
     windowData:T;

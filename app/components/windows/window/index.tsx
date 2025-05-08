@@ -1,3 +1,4 @@
+import {useHandleSounds} from "@/hooks/useHandlesounds";
 import { DeleteWindow } from "@/store/features/windowsSlice";
 import { useAppDispatch } from "@/store/hooks";
 import { windowType, windowTypeWithHandle } from "@/types";
@@ -8,6 +9,7 @@ export default function WindowComponent({windowData,handle,children}:windowTypeW
     const dispatch=useAppDispatch();
     const handleDelete=()=>{
         dispatch(DeleteWindow({id:windowData.id}));
+        useHandleSounds('/sounds/pop-off.mp3')
     }
     return(
         <div className=" hidden sm:block absolute top-1 bg-red-00 z-10  rounded-sm overflow-hidden border 
