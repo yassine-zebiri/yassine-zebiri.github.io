@@ -1,0 +1,1 @@
+export type Dtype=string|number;
