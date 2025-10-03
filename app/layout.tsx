@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Yassine Zebiri",
-  description: ".",
+  description: "developer web",
 };
 export const viewport:Viewport={
   themeColor:"#050e20",
