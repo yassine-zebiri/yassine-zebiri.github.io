@@ -1,0 +1,167 @@
+"use client";
+import { DeleteWindow,  setPositionWindow } from "@/store/features/windowsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { RootState } from "@/store/store";
+import { useEffect, useRef, useState } from "react";
+import ContainerDiv from "../containerDiv";
+import WindowComponent from "../windows/window";
+import AboutWindow from "../windows/about";
+import LinksWindow from "../windows/links";
+import WorksWindow from "../windows/works";
+import ContactWindow from "../windows/contact";
+import ScreenComponent from "../windows/screen";
+import Image from "next/image";
+import SoundComponent from "../soundComponent";
+import { windowType } from "@/types";
+
+export default function BoardComponent() {
+
+  const windows=useAppSelector((state:RootState)=>state.windows);
+  const screen=useAppSelector((state:RootState)=>state.screen);
+  const dispatch=useAppDispatch();
+  const[element,setElement]=useState<windowType|null>();
+
+  const [isDragging, setIsDragging] = useState(false);
+  const [draggedId, setDraggedId] = useState<number | null>(null);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  const boardRef = useRef<HTMLDivElement>(null);
+  const[elementTarget,seElementTarget]=useState<any>();
+  
+  
+  const Delete=(id:any)=>{
+    dispatch(DeleteWindow({id:id}));
+    setElement(null);
+  }
+  const handleGetCenter=()=>{
+    if(boardRef.current){
+      const boardRect=boardRef.current?.getBoundingClientRect();
+      const X=boardRect.width/2-250;
+      const Y=boardRect.height/2-250;
+      const result={x:X,y:Y};
+      return result;
+    }
+  }
+  const handleMouseDown = (
+    component: windowType,
+    e: React.MouseEvent<HTMLDivElement>
+  ) => {
+    seElementTarget(e.currentTarget)
+    const rect = (e.target as HTMLDivElement).getBoundingClientRect();
+    setOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    setDraggedId(component.id);
+    setIsDragging(true);
+    setElement(component)
+  };
+  
+  
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || draggedId === null || !boardRef.current) return;
+
+    const boardRect = boardRef.current.getBoundingClientRect();
+    let newX = e.clientX - boardRect.left - offset.x;
+    let newY = e.clientY - boardRect.top - offset.y;
+
+    const elementRect=boardRect;
+
+    const maxX=elementRect.width-(elementTarget.offsetWidth+85);
+    const maxY=elementRect.height-(elementTarget.offsetHeight)
+
+    newX=Math.max(0,Math.min(newX,maxX))
+    newY=Math.max(0,Math.min(newY,maxY))
+
+    requestAnimationFrame(()=>{
+      dispatch(setPositionWindow({id:element?.id,left:newX,top:newY}));
+    })
+   /*  setComponents((prev) =>
+      prev.map((comp) =>
+        comp.id === draggedId
+          ? {
+              ...comp,
+              left: `${Math.round(newX)}px`,
+              top: `${Math.round(newY)}px`,
+            }
+          : comp
+      )
+    ); */
+  };
+
+  const handleMouseUp = () => {
+    document.body.style.cursor = "default";
+   /*  if(element && element!=undefined  && element!=null && element.id!=undefined) {
+      dispatch(setPositionWindow(
+        {
+          id:element?.id,
+          cursor:"grab",
+        }));
+    } */
+
+    setIsDragging(false);
+    setDraggedId(null);
+    setElement(null);
+
+  };
+  
+  useEffect(() => {
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isDragging, draggedId, offset]);
+
+  
+  return (
+    <div
+      ref={boardRef}
+      className=" relative w-full h-screen overflow-hidden flex justify-center items-center"
+    >
+      {windows.map((item:windowType,index) => {
+        switch (item.name) {
+          case 'about':
+            return (
+              <WindowComponent key={index} handle={handleMouseDown} windowData={item} >
+                <AboutWindow/>
+            </WindowComponent>
+            )     
+            case 'links':
+              return (
+                <WindowComponent key={index} handle={handleMouseDown} windowData={item} >
+                  <LinksWindow/>
+              </WindowComponent>
+              )  
+            case 'works':
+              return (
+                <WindowComponent key={index} handle={handleMouseDown} windowData={item} >
+                  <WorksWindow/>
+              </WindowComponent>
+              ) 
+              case 'contact':
+              return (
+                <WindowComponent key={index} handle={handleMouseDown} windowData={item} >
+                  <ContactWindow/>
+              </WindowComponent>
+              )       
+          default:
+            break;
+        }
+      })}
+    
+
+      <ContainerDiv handle={()=>handleGetCenter()}/>
+        {screen.active && (
+          <ScreenComponent/>
+        )}
+     <div className="logo-rocket w-14 sm:w-fit">
+          <Image src={'/logo.png'} width={50} height={50} alt='Logo' 
+          style={{ height: "auto" , width:"auto"}} 
+          />
+        </div>
+        <SoundComponent/>
+        
+    </div>
+  );
+}

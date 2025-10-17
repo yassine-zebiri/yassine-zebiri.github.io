@@ -1,0 +1,15 @@
+.btn{
+    filter: drop-shadow(0 0 0.4em rgba(129, 184, 255, 0.517));
+    @apply px-4 py-2  rounded-lg md:text-base border sm:border-0 ring-white text-sm sm:ring-1 font-bold ; 
+}
+
+.btn-sm{
+    @apply px-2.5 py-1.5 border md:text-sm sm:text-xl text-xs rounded;
+}
+.btn-primary{
+    background-color: var(--color-btn-primary);
+    color:white;
+}
+.btn-primary:hover{
+    background-color: var(--color-btn-primary-hover);
+}

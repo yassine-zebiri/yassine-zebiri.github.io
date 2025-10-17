@@ -1,0 +1,104 @@
+
+
+@import "@fortawesome/fontawesome-svg-core/styles.css";
+@import "./styles/index.css";
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+.hero-title{
+  background: linear-gradient(120deg, #8dddec, #37aa94, #b4b6fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0em 0em 0.2em #646cffaa);
+}
+.logo-rocket{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  animation: shake 6s ease-in-out infinite;
+  transform-origin: center;
+  filter: drop-shadow(0em 0em 1em #646cffaa);
+  user-select: none;
+}
+.logo-rocket:hover{
+  filter: drop-shadow(0em 0em 2em #37aa94);
+  cursor: pointer;
+}
+
+@keyframes shake {
+  0% { transform:translateY(0px) rotate(0deg); }
+  25% { transform:translateY(-20px) rotate(5deg); }
+  50% { transform:translateY(-40px) rotate(0deg); }
+  75% { transform:translateY(-20px) rotate(-5deg); }
+  100% { transform:translateY(0px) rotate(0deg); }
+}
+.animation-pic{
+  animation: shake 6s ease-in-out infinite;
+}
+
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: rgb(5, 14, 32);
+    --background-2: rgb(22, 42, 83);
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background:var(--background);
+  color: var(--foreground);
+  font-family: monospace;
+  user-select: none;
+  height: 100%;
+}
+.bg-primary {
+  background-color: var(--background-2);
+}
+
+
+.box-model{
+  position: relative;
+}
+.box-model-icon{
+  position: absolute;
+  top: 1.5em;
+  left: 1.5rem;
+  border-radius: 100%;
+  background-color: rgba(141, 141, 141, 0.472);
+  padding: 0.75rem;
+  cursor: pointer;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+
+.model-pic{
+  position: fixed!important;
+  width: 100vw;
+  height: 100%;
+  z-index: 99;
+  background-color: #252525d8;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.model-pic img{
+  max-width: 1000px;
+  width: 100%;
+  padding: 0.75rem;
+}
+
