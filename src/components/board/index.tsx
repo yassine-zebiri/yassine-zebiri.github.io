@@ -155,9 +155,8 @@ export default function BoardComponent() {
         {screen.active && (
           <ScreenComponent/>
         )}
-     <div className="logo-rocket w-14 sm:w-fit">
-          <Image src={'/logo.png'} width={50} height={50} alt='Logo' 
-          style={{ height: "auto" , width:"auto"}} 
+     <div className="logo-rocket sm:w-fit">
+          <Image src={'/logo.png'} width={80} height={80} alt='rocket ...' 
           />
         </div>
         <SoundComponent/>

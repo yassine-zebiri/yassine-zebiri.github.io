@@ -22,6 +22,9 @@
   filter: drop-shadow(0em 0em 1em #646cffaa);
   user-select: none;
 }
+.logo-rocket img{
+  width: 80px;
+}
 .logo-rocket:hover{
   filter: drop-shadow(0em 0em 2em #37aa94);
   cursor: pointer;
