@@ -23,7 +23,7 @@
   user-select: none;
 }
 .logo-rocket img{
-  width: 80px;
+  width: 50px;
 }
 .logo-rocket:hover{
   filter: drop-shadow(0em 0em 2em #37aa94);
